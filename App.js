@@ -1,5 +1,5 @@
 import React ,{useState} from 'react';
-import { Keyboard, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Keyboard, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import Task from "./components/Task.js"
 export default function App() {
   const [task,settask] = useState('');
@@ -20,7 +20,7 @@ export default function App() {
     <View style={styles.container}>
       <View style={styles.taskWrapper}>
         <Text style={styles.sectionTitle}>Today's Task</Text>
-        <View style={styles.items}>
+        <ScrollView style={styles.items}>
           {
             tasks.map((item,index) => {
               return (
@@ -30,7 +30,7 @@ export default function App() {
               )
             })
           }
-        </View>
+        </ScrollView>
       </View>
       <KeyboardAvoidingView 
         behavior = {
@@ -64,15 +64,19 @@ const styles = StyleSheet.create({
     fontWeight : 'bold'
   },
   items : {
-    marginTop : 30
+    marginTop : 30,
+    marginBottom : 100
   },
   writeTaskWrapper : {
     position : 'absolute',
-    bottom : 30,
+    bottom: 0,
+    paddingTop : 10,
+    paddingBottom : 10,
     width : '100%',
     flexDirection : 'row',
     justifyContent : 'space-around',
-    alignItems : 'center'
+    alignItems : 'center',
+    backgroundColor : '#E8EAED'
   },
   input : {
     backgroundColor : '#fff',
@@ -93,6 +97,6 @@ const styles = StyleSheet.create({
   },
   addText : {
     fontSize : 27,
-    color : '#C0C0C0'
+    color : '#888888'
   },
 });
